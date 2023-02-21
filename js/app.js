@@ -3,8 +3,10 @@
 let welcome = document.querySelector("#welcome");
 const testButton = document.querySelector("button");
 
-function checkAnswer(userAnswer, correctAnswer) {
-  if (userAnswer.toLowerCase() == correctAnswer) {
+function checkAnswer(userAnswer, correctAnswers) {
+
+  userAnswer = userAnswer.toLowerCase();
+  if (correctAnswers.includes(userAnswer)) {
     // console.log("correct");
     alert("correct");
     return true;
@@ -31,23 +33,23 @@ testButton.addEventListener("click", (evnt) => {
   let correctAnswers = 0;
 
   let name = prompt("Is my name Jim Cannon?");
-  if (checkAnswer(name, "n")) correctAnswers++;
+  if (checkAnswer(name, ["n", "no"])) correctAnswers++;
 
   let work = prompt("Have I worked for Andy Frain Services?");
-  if (checkAnswer(work, "y")) correctAnswers++;
+  if (checkAnswer(work, ["y", "yes"])) correctAnswers++;
 
   let education = prompt(
     "Did I get my education from University of Tennessee at Martin?"
   );
-  if (checkAnswer(education, "y")) correctAnswers++;
+  if (checkAnswer(education, ["y", "yes"])) correctAnswers++;
 
   let goal = prompt(
     "Do I want to mentor and inspire the next generation of developers?"
   );
-  if (checkAnswer(goal, "y")) correctAnswers++;
+  if (checkAnswer(goal, ["y", "yes"])) correctAnswers++;
 
   let bootcamp = prompt("Am I current enrolled in CodeCrew bootcamp?");
-  if (checkAnswer(bootcamp, "y")) correctAnswers++;
+  if (checkAnswer(bootcamp, ["y", "yes"])) correctAnswers++;
 
   alert(
     `Thanks for taking my test ${
