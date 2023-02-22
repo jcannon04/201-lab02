@@ -1,6 +1,7 @@
 "use strict";
 
-let welcome = document.querySelector("#welcome");
+// dom elements
+const welcome = document.querySelector("#welcome");
 const testButton = document.querySelector("button");
 
 function checkAnswer(userAnswer, correctAnswers) {
@@ -13,7 +14,7 @@ function checkAnswer(userAnswer, correctAnswers) {
     // console.log("incorrect");
     alert("incorrect");
     return false;
-  }
+  } 
 }
 
 function displayUsername(name) {
@@ -43,6 +44,7 @@ function checkGuess(guess, answer) {
 let userName = prompt("Hello, what is your name?");
 displayUsername(userName);
 
+// event listeners
 testButton.addEventListener("click", (evnt) => {
   alert(
     `Thanks ${
