@@ -75,9 +75,10 @@ testButton.addEventListener("click", (evnt) => {
 
   // number guessing game
   let counter = 4;
+  let correctNumber = 42;
   for (let i = 0; i < 4; i++) {
     let guess = prompt("Guess a number");
-    if (checkGuess(guess, 42)) {
+    if ( checkGuess(guess, correctNumber) ) {
       correctAnswers++;
       break;
     } else {
@@ -85,7 +86,7 @@ testButton.addEventListener("click", (evnt) => {
     }
   }
   if (counter == 0) {
-    alert("sorry the number was 42");
+    alert(`sorry the number was ${correctNumber}`);
   }
 
   // favorites places question
@@ -118,8 +119,7 @@ testButton.addEventListener("click", (evnt) => {
 
     let strippedPlace = place.toLowerCase().replace(/ /g, '');
     for(let j = 0; j < answerArr.length; j++) {
-      let strippedAnswer = answerArr[j].toLowerCase().replace(/ /g, '');
-      if (strippedAnswer == strippedPlace) {
+      if (answerArr[j] == strippedPlace) {
         correctAnswers++;
         correct = true;
         alert(`${place} is correct! I enjoy all of these places in memphis:\n\n${placeArr.join(", ")}`);
