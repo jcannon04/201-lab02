@@ -17,15 +17,15 @@ function checkAnswer(userAnswer, correctAnswers) {
   } 
 }
 
-function displayUsername(name) {
+function displayWelcomeName(name) {
   if (name === null || name.length == 0) welcome.innerHTML = "Welcome";
   else welcome.innerHTML = `Welcome, ${userName}!`;
 }
 
 function checkGuess(guess, answer) {
   guess = parseInt(guess);
-  console.log(guess);
-  if (isNaN(guess)) {
+  // console.log(guess);
+  if ( isNaN(guess) )  {
     alert("Must enter valid number!");
     return false;
   }
@@ -42,7 +42,7 @@ function checkGuess(guess, answer) {
 }
 
 let userName = prompt("Hello, what is your name?");
-displayUsername(userName);
+displayWelcomeName(userName);
 
 // event listeners
 testButton.addEventListener("click", (evnt) => {
@@ -110,15 +110,23 @@ testButton.addEventListener("click", (evnt) => {
 
   counter = 6;
   for (let i = 0; i < 6; i++) {
+    let correct = false;
     let place = prompt("Name one of my 10 favorite places in memphis");
     if (place === null) {
       place = "";
     }
 
     let strippedPlace = place.toLowerCase().replace(/ /g, '');
-    if (answerArr.includes(strippedPlace)) {
-      correctAnswers++;
-      alert(`${place} is correct! I enjoy all of these places in memphis:\n\n${placeArr.join(", ")}`);
+    for(let j = 0; j < answerArr.length; j++) {
+      let strippedAnswer = answerArr[j].toLowerCase().replace(/ /g, '');
+      if (strippedAnswer == strippedPlace) {
+        correctAnswers++;
+        correct = true;
+        alert(`${place} is correct! I enjoy all of these places in memphis:\n\n${placeArr.join(", ")}`);
+        break;
+      } 
+    }
+    if (correct) {
       break;
     } else {
       counter--;
